@@ -1,10 +1,18 @@
-import {MAKE_TODO_IMPORTANT, makeTodoImportant, REMOVE_TODO, removeTodo} from "../redux/actions";
+import {
+	MAKE_TODO_IMPORTANT,
+	makeTodoImportant,
+	REMOVE_TODO,
+	removeTodo,
+	TOGGLE_TODO_STATUS,
+	toggleTodoStatus
+} from "../redux/actions";
 import {connect} from "react-redux";
 import {TodoCardButton} from "../component/TodoCardButton/TodoCardButton";
 
 const mapStateToProps = (state, ownProps) => {
 	return {
 		text: ownProps.children,
+		className: ownProps.className
 	}
 };
 
@@ -18,6 +26,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 				
 				case MAKE_TODO_IMPORTANT:
 					dispatch(makeTodoImportant(ownProps.id));
+					break;
+
+				case TOGGLE_TODO_STATUS:
+					dispatch(toggleTodoStatus(ownProps.id))
 					break;
 				
 				default:

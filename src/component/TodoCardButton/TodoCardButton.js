@@ -1,6 +1,6 @@
 import React from "react";
 
-export const TodoCardButton = ({text, callback}) => {
+export const TodoCardButton = ({text, callback, className}) => {
 	
-	return <button onClick={() => callback()}>{text}</button>
+	return <button className={className} onClick={() => callback()}>{text}</button>
 };

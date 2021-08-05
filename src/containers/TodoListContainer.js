@@ -1,4 +1,4 @@
-import {FILTER_TYPES, toggleTodoStatus} from "../redux/actions";
+import {changeTodoText, FILTER_TYPES, removeTodo, toggleTodoStatus} from "../redux/actions";
 import {connect} from "react-redux";
 import {TodoList} from "../component/TodoList/TodoList";
 
@@ -30,11 +30,14 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		toggleStatus: (id) => {
-			dispatch(toggleTodoStatus(id));
+		changeText: (id, text) => {
+			dispatch(changeTodoText(id, text));
+		},
+		onEmptyInput: (id) => {
+			if(window.confirm("Delete Todo Card?")) dispatch(removeTodo(id));
 		}
 	}
-}
+};
 
 export const TodoListContainer = connect(
 	mapStateToProps,

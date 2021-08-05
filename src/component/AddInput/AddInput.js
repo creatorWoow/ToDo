@@ -5,13 +5,13 @@ export const AddInput = ({callback}) => {
 	
 	return (
 		<div>
-			<input
+			<input className={"form-control-sm mr-2"}
 				type="text"
 				value={text}
 				onInput={e => setText(e.target.value)}/>
-			<button
+			<button className={"btn btn-secondary"}
 				onClick={() => {
-					callback(text);
+					if (text.trim()) callback(text.trim());
 					setText("");
 				}}>Add</button>
 		</div>

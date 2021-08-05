@@ -2,7 +2,14 @@ import {ADD_TODO, CHANGE_TODO_TEXT, MAKE_TODO_IMPORTANT, REMOVE_TODO, TOGGLE_TOD
 
 let todoId = 1;
 
-export const todos = (state = [], action) => {
+const initalState = [{
+	completed: false,
+	id: 0,
+	important: false,
+	text: "Some Text"
+}]
+
+export const todos = (state = initalState, action) => {
 	switch (action.type) {
 		case ADD_TODO:
 			return [...state, {...action.data, id: todoId++}];
